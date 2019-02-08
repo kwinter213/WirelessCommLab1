@@ -1,6 +1,6 @@
 function message2send=createFileforTransmit(header, footer, message, imagmessage)
 
-%tx_samples_from_file ??freq 2478e6 ??rate 2e6 ??type float ??ant “TX/RX” ??subdev ”A:A” ??gain 40 ??file
+%tx_samples_from_file ??freq 2478e6 ??rate 2e5 ??type float ??ant “TX/RX” ??subdev ”A:A” ??gain 40 ??file
 %tx.dat
 
 %C:\Program Files\UHD\lib\uhd\examples
@@ -16,7 +16,7 @@ function message2send=createFileforTransmit(header, footer, message, imagmessage
     %adding message, where every bit is repeated 1000 times
     for i=1:length(message)
         for k=1:1000
-            message2send(length(header)+i+k)=message(i) +message(i)*j;
+            message2send(length(header)+((i-1)*1000)+k)= message(i) +imagmessage(i)*j;
         end
     end
     
